@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import com.example.demo.repository.MemberRepository;
 import com.example.demo.vo.Member;
 
+import jakarta.transaction.Transactional;
 
+@Transactional
 public class MemberService {
 	
 	private final MemberRepository memberRepository;
