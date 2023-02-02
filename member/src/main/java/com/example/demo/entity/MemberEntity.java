@@ -39,4 +39,14 @@ public class MemberEntity {
 		return memberEntity;
 	}
 	
+	public static MemberEntity toUpdateMemberEntity(MemberDto memberDTO) {
+		MemberEntity memberEntity = new MemberEntity();
+		memberEntity.setId(memberDTO.getId());
+		memberEntity.setMemberEmail(memberDTO.getMemberEmail());
+		memberEntity.setMemberPwd(memberDTO.getMemberPwd());
+		memberEntity.setMemberName(memberDTO.getMemberName());
+		
+		return memberEntity;
+	}
+	
 }

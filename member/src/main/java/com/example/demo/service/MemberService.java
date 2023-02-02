@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -44,5 +46,46 @@ public class MemberService {
 			// 조회 결과가 없다
 			return null;
 		}
+	}
+
+	public List<MemberDto> findAll() {
+		// repository에서 제공해주는 메소드
+		List<MemberEntity> memberEntityList = memberRepository.findAll();
+		// controller로 넘겨주기위한 return 값 memberDtoList를 만든다
+		List<MemberDto> memberDtoList = new ArrayList<>();
+		
+		for (MemberEntity memberEntity : memberEntityList) {
+			// Entity를 Dto객체로 바꿔서 controller로 보내준다
+			memberDtoList.add(MemberDto.toMemberDTO(memberEntity));
+		}
+		
+		return memberDtoList;
+	}
+
+	public MemberDto findById(Long id) {
+		Optional<MemberEntity> findById = memberRepository.findById(id);
+		if(findById.isPresent()) {
+			return MemberDto.toMemberDTO(findById.get());
+		} else {
+			return null;
+		}
+	}
+
+	public MemberDto updateForm(String myEmail) {
+		 Optional<MemberEntity> findByMemberEmail = memberRepository.findByMemberEmail(myEmail);
+		 if(findByMemberEmail.isPresent()) {
+			return MemberDto.toMemberDTO(findByMemberEmail.get());
+		 } else {
+			 return null;	
+		 }
+	}
+
+	public void update(MemberDto dto) {
+		memberRepository.save(MemberEntity.toUpdateMemberEntity(dto));
+	}
+
+	public void deleteById(Long id) {
+		memberRepository.deleteById(id);
+		
 	}
 }
