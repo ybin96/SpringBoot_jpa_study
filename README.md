@@ -15,4 +15,9 @@
  - 로그아웃 기능
  - ajax 이용하여 이메일 중복확인 기능
  
+ #### ◈ 스프링 부트 + MySQL + Spring Data JPA 활용하여 블로그 만들어보기 _Blog
+ 1. Entity 테이블 생성
+  - MySQL DB 생성
+  - 각 테이블 연관관계의 주인 학습
+ 
  
