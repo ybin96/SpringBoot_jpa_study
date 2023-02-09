@@ -4,9 +4,9 @@ let index = {
 			this.save();
 		});
 		
-		$("#btn-login").on("click", ()=>{
+		/*$("#btn-login").on("click", ()=>{
 			this.login();
-		});
+		});*/
 	},
 	
 	save: function(){
@@ -21,7 +21,7 @@ let index = {
 		// ajax 통신을 이용하여 3개의 데이터를 josn으로 변경하여 insert 요청
 		$.ajax({
 			type:"POST",
-			url:"/api/user",
+			url:"/auth/joinProc",
 			data:JSON.stringify(data),
 			contentType:"application/json;charset=utf-8",
 			dataType:"json"
@@ -34,7 +34,7 @@ let index = {
 		});
 	},
 	
-		login: function(){
+		/*login: function(){
 		//alert("user의 save함수 호출");
 		let data = {
 			username: $("#username").val(),
@@ -56,7 +56,7 @@ let index = {
 		}).fail(function(error){
 			alert(JSON.stringify(error));
 		});
-	}
+	}*/
 }
 
 index.init();

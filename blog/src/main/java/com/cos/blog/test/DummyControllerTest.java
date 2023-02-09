@@ -1,8 +1,9 @@
 package com.cos.blog.test;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Supplier;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,7 +21,6 @@ import com.cos.blog.model.RoleType;
 import com.cos.blog.model.User;
 import com.cos.blog.repository.UserRepository;
 
-import jakarta.transaction.Transactional;
 
 
 @RestController
