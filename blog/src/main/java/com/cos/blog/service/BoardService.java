@@ -1,6 +1,8 @@
 package com.cos.blog.service;
 
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -52,6 +54,19 @@ public class BoardService {
 		}
 		
 		boardRepository.deleteById(id);
+	}
+
+	@Transactional
+	public void 글수정하기(int id, Board requestboard) {
+		Board board = boardRepository.findById(id)
+				.orElseThrow(()->{
+					return new IllegalArgumentException();
+				}); // 영속화
+		
+		board.setTitle(requestboard.getTitle());
+		board.setContent(requestboard.getContent());
+		// 해당 함수 종료시 트랙잭션이 종료된다. 이때 더티체킹 - 자동 업데이트
+		
 	}
 	
 }
