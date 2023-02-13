@@ -3,6 +3,7 @@ package com.cos.blog.model;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -46,7 +47,7 @@ public class Board {
 	@JoinColumn(name="userId") // 필드 ID = userId
 	private User user; // DB는 오브젝트를 저장할수 없지만, 자바는 오브젝트를 저장할수 있다
 	
-	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER) 
+	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE) 
 	// mappedBy 연관관계의 주인x (FX x, DB에 칼럼이 만들어지지 않는다)
 	private List<Reply> reply;
 	
